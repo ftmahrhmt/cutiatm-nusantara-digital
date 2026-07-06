@@ -1,30 +1,86 @@
-SISTEM CUTI KARYAWAN - SIAP JALAN
+# SISTEM CUTI KARYAWAN NUSANTARA DIGITAL - SIAP JALAN
 
-Cara menjalankan:
-1. Extract folder project ke htdocs / www / folder server lokal kamu.
-2. Buat/import database dari file: dbcuti_ready.sql
-   - Database yang dipakai: dbcuti
-   - User database default di function/koneksi.php: root
-   - Password default: kosong
-3. Jalankan lewat browser, contoh:
+## 📌 Cara Menjalankan
+
+1. Extract folder project ke:
+   - `htdocs` (XAMPP)
+   - `www` (Laragon/WAMP)
+   - atau folder server lokal lainnya
+
+2. Buat / Import Database:
+   - File: `dbcuti_ready.sql`
+   - Nama database: `dbcuti`
+
+3. Setting koneksi database di:
+   function/koneksi.php
+   - Default:
+   - Host : localhost
+   - User : root
+   - Password : (kosong)
+   - Database : dbcuti
+
+4. Jalankan di browser:
    http://localhost/cutiatm_nusantara_digital/cutiatm_final/
 
-Akun testing:
-- Admin: username admin, password admin
-- Karyawan: username 000111, password 123456
-- Karyawan: username 111000, password 654321
 
-Perbaikan yang sudah dilakukan:
-1. Approval Cuti hanya bisa dilakukan oleh admin.
-2. Halaman Cek Pengajuan dibuat read-only, tidak ada aksi approve/tolak.
-3. Proses Cuti sudah memanggil data pengajuan yang statusnya Approve/Success.
-4. Saat cuti diproses, sisa cuti karyawan otomatis berkurang sesuai lama cuti, bukan hanya berkurang 1.
-5. Jadwal Cuti menampilkan karyawan yang cutinya sudah disetujui/diproses.
-6. Sisa Cuti menampilkan sisa cuti real dari tabel karyawan dan riwayat cuti.
-7. Jenis cuti ditambah: Cuti Tahunan dan Cuti Melahirkan.
-8. Tampilan dirapikan agar lebih lega, tidak sempit, dan tabel bisa scroll di layar kecil.
-9. File print laporan utama sudah dirapikan agar tidak error.
+---
 
-Catatan:
-- Status alur data: Pending -> Approve/Tolak -> Success.
-- Pengurangan sisa cuti terjadi saat admin klik Proses di menu Proses Cuti.
+## 🔑 Akun Testing
+
+### 👨‍💼 Admin
+- Username: `admin`
+- Password: `admin`
+
+### 👨‍🔧 Karyawan
+- Username: `000111`
+- Password: `123456`
+
+- Username: `111000`
+- Password: `654321`
+
+---
+
+## ✅ Perbaikan yang Sudah Dilakukan
+
+1. Approval cuti hanya bisa dilakukan oleh **Admin**.
+2. Halaman **Cek Pengajuan** dibuat **read-only** (tidak ada tombol approve/tolak).
+3. Proses cuti hanya mengambil data dengan status:
+- `Approve`
+- `Success`
+4. Pengurangan sisa cuti:
+- Otomatis sesuai **lama cuti**
+- Bukan lagi dikurangi 1
+5. Menu **Jadwal Cuti**:
+- Menampilkan karyawan yang cutinya sudah disetujui/diproses
+6. Menu **Sisa Cuti**:
+- Menampilkan sisa cuti real dari database
+7. Penambahan jenis cuti:
+- Cuti Tahunan
+- Cuti Melahirkan
+8. Tampilan UI:
+- Lebih lega
+- Responsive
+- Tabel bisa scroll di layar kecil
+9. File print laporan:
+- Sudah diperbaiki agar tidak error
+
+---
+
+## 🔄 Alur Status Cuti
+
+---
+
+## ⚠️ Catatan Penting
+
+- Pengurangan sisa cuti terjadi saat:
+  👉 Admin klik tombol **Proses** di menu **Proses Cuti**
+
+---
+
+## 🚀 Status Project
+
+✅ Siap dijalankan  
+✅ Sudah diperbaiki bug utama  
+✅ Cocok untuk demo / tugas / implementasi awal  
+
+---
