@@ -66,7 +66,57 @@
 
 ---
 
-## 🔄 Alur Status Cuti
+## 🔄 Flowchart Sistem (Detail)
+
+```mermaid
+flowchart TD
+    A[Start] --> B[Login]
+    B --> C{Validasi Login}
+    C -- Gagal --> B
+    C -- Berhasil --> D{Cek Role}
+
+    %% ADMIN
+    D -- Admin --> E[Dashboard Admin]
+
+    E --> F[Kelola Data Pegawai]
+    F --> F1[Tambah Pegawai]
+    F --> F2[Edit Pegawai]
+    F --> F3[Hapus Pegawai]
+
+    E --> G[Kelola Jenis Cuti]
+    G --> G1[Tambah Jenis]
+    G --> G2[Edit Jenis]
+    G --> G3[Hapus Jenis]
+
+    E --> H[Kelola Pengajuan Cuti]
+    H --> H1[Lihat Pengajuan]
+    H1 --> I{Setujui Cuti}
+    I -- Ya --> J[Approve]
+    I -- Tidak --> K[Tolak]
+
+    E --> L[Laporan Cuti]
+    L --> L1[Filter Data]
+    L --> L2[Export / Cetak]
+
+    %% KARYAWAN
+    D -- Karyawan --> M[Dashboard Karyawan]
+
+    M --> N[Ajukan Cuti]
+    N --> N1[Isi Form]
+    N1 --> N2[Simpan]
+    N2 --> N3[Menunggu Approval]
+
+    M --> O[Lihat Status]
+    O --> O1[Disetujui / Ditolak]
+
+    M --> P[Riwayat Cuti]
+    P --> P1[Lihat Data]
+
+    %% END
+    J --> Q[End]
+    K --> Q
+    N3 --> Q
+```
 
 ---
 
