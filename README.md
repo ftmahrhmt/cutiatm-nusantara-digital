@@ -20,7 +20,7 @@
    - Database : dbcuti
 
 4. Jalankan di browser:
-   http://localhost/cutiatm_nusantara_digital/cutiatm_final/
+   
 
 
 ---
