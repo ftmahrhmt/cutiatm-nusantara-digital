@@ -101,7 +101,28 @@ Aplikasi dapat dijalankan pada:
 * Hosting berbayar / VPS
 
 ---
-33 ⚠️ Catatan
+
+## 🌐 Live Demo
+
+🚀 Aplikasi dapat diakses secara online:
+
+🔗 **http://cutinusantaradigital.infinityfree.me/**
+
+Silakan login menggunakan akun yang tersedia untuk mencoba fitur sistem.
+
+## 🔑 Akun Testing
+
+*Admin
+- Username: admin
+- Password: admin
+
+*Karyawan
+- Username: 12345678
+- Password: 123456
+
+---
+
+## ⚠️ Catatan
 * Approval hanya bisa dilakukan oleh Admin
 * Sisa cuti berkurang otomatis sesuai lama cuti
 * Pengurangan cuti saat admin klik Proses Cuti
