@@ -1,136 +1,119 @@
-# SISTEM CUTI KARYAWAN NUSANTARA DIGITAL - SIAP JALAN
+# 📌 Sistem Pengajuan Cuti Karyawan Nusantara Digital
 
-## 📌 Cara Menjalankan
-
-1. Extract folder project ke:
-   - `htdocs` (XAMPP)
-   - `www` (Laragon/WAMP)
-   - atau folder server lokal lainnya
-
-2. Buat / Import Database:
-   - File: `dbcuti_ready.sql`
-   - Nama database: `dbcuti`
-
-3. Setting koneksi database di:
-   function/koneksi.php
-   - Default:
-   - Host : localhost
-   - User : root
-   - Password : (kosong)
-   - Database : dbcuti
-
-4. Jalankan di browser:
-   http://localhost/cutiatm_nusantara_digital/cutiatm_final/
-
+Aplikasi berbasis web yang dirancang untuk mempermudah proses pengajuan dan pengelolaan cuti karyawan. Sistem ini mencakup fitur autentikasi pengguna, pengajuan cuti, persetujuan oleh admin, serta pengelolaan data pegawai secara terpusat.
 
 ---
 
-## 🔑 Akun Testing
+## 🚀 Fitur Utama
 
-### 👨‍💼 Admin
-- Username: `admin`
-- Password: `admin`
-
-### 👨‍🔧 Karyawan
-- Username: `000111`
-- Password: `123456`
-
-- Username: `111000`
-- Password: `654321`
+* Login Admin & Karyawan
+* Pengajuan Cuti
+* Approval / Penolakan Cuti (Admin)
+* Manajemen Data Pegawai
+* Laporan Cuti
+* Ganti Password (Admin & Karyawan)
 
 ---
 
-## ✅ Perbaikan yang Sudah Dilakukan
+## 👥 Role Pengguna
 
-1. Approval cuti hanya bisa dilakukan oleh **Admin**.
-2. Halaman **Cek Pengajuan** dibuat **read-only** (tidak ada tombol approve/tolak).
-3. Proses cuti hanya mengambil data dengan status:
-- `Approve`
-- `Success`
-4. Pengurangan sisa cuti:
-- Otomatis sesuai **lama cuti**
-- Bukan lagi dikurangi 1
-5. Menu **Jadwal Cuti**:
-- Menampilkan karyawan yang cutinya sudah disetujui/diproses
-6. Menu **Sisa Cuti**:
-- Menampilkan sisa cuti real dari database
-7. Penambahan jenis cuti:
-- Cuti Tahunan
-- Cuti Melahirkan
-8. Tampilan UI:
-- Lebih lega
-- Responsive
-- Tabel bisa scroll di layar kecil
-9. File print laporan:
-- Sudah diperbaiki agar tidak error
+### **Admin**
+
+* Mengelola data pegawai
+* Mengelola pengajuan cuti
+* Menyetujui atau menolak cuti
+* Melihat laporan cuti
+* Mengganti password
+
+### **Karyawan**
+
+* Mengajukan cuti
+* Melihat status pengajuan cuti
+* Melihat riwayat cuti
+* Mengganti password
 
 ---
 
-## 🔄 Flowchart Sistem (Detail)
+## 🔄 Flowchart Sistem
 
 ```mermaid
 flowchart TD
     A[Start] --> B[Login]
     B --> C{Validasi Login}
-    C -- Gagal --> B
-    C -- Berhasil --> D{Cek Role}
+    C -->|Gagal| B
+    C -->|Berhasil| D{Cek Role}
 
-    %% ADMIN
-    D -- Admin --> E[Dashboard Admin]
-
+    %% Admin
+    D -->|Admin| E[Dashboard Admin]
     E --> F[Kelola Data Pegawai]
-    F --> F1[Tambah Pegawai]
-    F --> F2[Edit Pegawai]
-    F --> F3[Hapus Pegawai]
+    E --> G[Kelola Pengajuan Cuti]
+    G --> H{Setujui?}
+    H -->|Ya| I[Approve Cuti]
+    H -->|Tidak| J[Tolak Cuti]
+    E --> R[Ganti Password]
+    R --> R1[Input Password Baru]
+    R1 --> R2[Simpan]
 
-    E --> G[Kelola Jenis Cuti]
-    G --> G1[Tambah Jenis]
-    G --> G2[Edit Jenis]
-    G --> G3[Hapus Jenis]
+    %% Karyawan
+    D -->|Karyawan| K[Dashboard Karyawan]
+    K --> L[Ajukan Cuti]
+    L --> M[Input Data]
+    M --> N[Simpan]
+    N --> O[Menunggu Approval]
+    K --> P[Lihat Status Cuti]
+    K --> S[Ganti Password]
+    S --> S1[Input Password Baru]
+    S1 --> S2[Simpan]
 
-    E --> H[Kelola Pengajuan Cuti]
-    H --> H1[Lihat Pengajuan]
-    H1 --> I{Setujui Cuti}
-    I -- Ya --> J[Approve]
-    I -- Tidak --> K[Tolak]
-
-    E --> L[Laporan Cuti]
-    L --> L1[Filter Data]
-    L --> L2[Export / Cetak]
-
-    %% KARYAWAN
-    D -- Karyawan --> M[Dashboard Karyawan]
-
-    M --> N[Ajukan Cuti]
-    N --> N1[Isi Form]
-    N1 --> N2[Simpan]
-    N2 --> N3[Menunggu Approval]
-
-    M --> O[Lihat Status]
-    O --> O1[Disetujui / Ditolak]
-
-    M --> P[Riwayat Cuti]
-    P --> P1[Lihat Data]
-
-    %% END
-    J --> Q[End]
-    K --> Q
-    N3 --> Q
+    I --> T[End]
+    J --> T
+    O --> T
+    R2 --> T
+    S2 --> T
 ```
 
 ---
 
-## ⚠️ Catatan Penting
+## 🛠️ Teknologi yang Digunakan
 
-- Pengurangan sisa cuti terjadi saat:
-  👉 Admin klik tombol **Proses** di menu **Proses Cuti**
+* PHP Native
+* MySQL
+* HTML, CSS, JavaScript
+* Bootstrap (Opsional)
+
+---
+
+## ⚙️ Cara Menjalankan
+
+1. Clone repository ini
+2. Import database ke phpMyAdmin
+3. Atur koneksi database pada file `koneksi.php`
+4. Jalankan aplikasi melalui localhost atau hosting
 
 ---
 
-## 🚀 Status Project
+## 🌐 Deployment
 
-✅ Siap dijalankan  
-✅ Sudah diperbaiki bug utama  
-✅ Cocok untuk demo / tugas / implementasi awal  
+Aplikasi dapat dijalankan pada:
+
+* Localhost (XAMPP, Laragon, dll)
+* Hosting gratis seperti InfinityFree
+* Hosting berbayar / VPS
 
 ---
+33 ⚠️ Catatan
+* Approval hanya bisa dilakukan oleh Admin
+* Sisa cuti berkurang otomatis sesuai lama cuti
+* Pengurangan cuti saat admin klik Proses Cuti
+
+---
+
+## ✨ Catatan
+
+Pastikan konfigurasi database dan koneksi sudah sesuai agar aplikasi dapat berjalan dengan baik tanpa error.
+
+---
+
+## 👨‍💻 Author
+
+Dibuat oleh: **Fatmah Rohmah Tika**
